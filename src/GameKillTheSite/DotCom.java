@@ -10,11 +10,11 @@ public class DotCom {
     private String name;
 
     public void setLocationCells(ArrayList<String> loc) {
-        locationCells = loc;
+        this.locationCells = loc;
     }
 
     public void setName (String n){
-        name = n;
+        this.name = n;
     }
 
     public String checkYourself (String userInput){
@@ -25,7 +25,7 @@ public class DotCom {
 
         if (locationCells.isEmpty()) {
             result = "Потопил";
-            System.out.println("Ой! Вы потопили" + name + "  :(" );
+            System.out.println("Ой! Вы потопили" + this.name + "  :(" );
             } else {
             result = "Попал";
         }

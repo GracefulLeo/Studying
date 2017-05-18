@@ -1,7 +1,7 @@
 package GameKillTheSite;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
 
 
 /**
@@ -20,17 +20,14 @@ public class DotComBust {
         two.setName("eToys.com");
         DotCom three = new DotCom();
         three.setName("Go2.com");
-        dotComsList.add(one);
-        dotComsList.add(two);
-        dotComsList.add(three);
+        Collections.addAll(dotComsList, one, two, three);
 
-        System.out.println("Ваша цель - потопить три \\\"сайта\\\".");
+        System.out.println("Ваша цель - потопить три \"сайта\".");
         System.out.println("Pets.com, eToys.com, Go2.com");
         System.out.println("Попытайтесь потопить их за минимальное количество ходов");
 
         for (DotCom dotComToSet : dotComsList) {
-            ArrayList<String> newLocation = helper.placeDotCom(3);
-            dotComToSet.setLocationCells(newLocation);
+            dotComToSet.setLocationCells(helper.placeDotCom(3));
         } // Конец цикла
     } //Конец метода setUpGame
 

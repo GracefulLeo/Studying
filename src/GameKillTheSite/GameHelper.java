@@ -30,9 +30,9 @@ public class GameHelper {
     }
 
     public ArrayList<String> placeDotCom(int comSize) {
-        ArrayList<String> alphaCells = new ArrayList<String>();
+        ArrayList<String> alphaCells = new ArrayList<>();
         String[] alphacoords = new String[comSize];
-        String temp = null;
+        String temp;
         int[] coords = new int[comSize];
         int attempts = 0;
         boolean success = false;
@@ -57,9 +57,9 @@ public class GameHelper {
                     }
                     if (x > 0 && (location % gridLength == 0)) {
                         success = false;
-                    } else {
-                        success = false;
                     }
+                } else {
+                    success = false;
                 }
             }
         }
