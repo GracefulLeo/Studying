@@ -10,23 +10,27 @@ import java.util.Scanner;
 public class ZeckendorfNumber {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int input = sc.nextInt();
 
+        convertDecimalToFibonacciBinary(sc.nextInt());
+    }
+
+    private static void convertDecimalToFibonacciBinary(int input) {
         ArrayList<Integer> fibonacci = getReversedFibonacci(input);
-        int size = fibonacci.size();
-        byte[] bytes = new byte[size];
+        StringBuilder output = new StringBuilder();
 
-        for (int i = 0; i < size; i++) {
-            if (input - fibonacci.get(i) == 0 || input - fibonacci.get(i) > 0) {
-                bytes[i] = 1;
-            } else if (input - fibonacci.get(i) < 0) {
+        for (Integer aFibonacci : fibonacci) {
+            if (input - aFibonacci == 0 || input - aFibonacci > 0) {
+                output.append(1);
+            } else if (input - aFibonacci < 0) {
+                output.append(0);
                 continue;
-            } else bytes[i] = 0;
+            } else output.append(0);
 
-            input -= fibonacci.get(i);
+            input -= aFibonacci;
         }
+        output.append("\n");
 
-        for (byte b : bytes) System.out.print(b);
+        System.out.print(output);
     }
 
     private static ArrayList<Integer> getReversedFibonacci(int input) {
