@@ -15,10 +15,10 @@ public class ZeckendorfNumber {
     }
 
     private static void convertDecimalToFibonacciBinary(int input) {
-        ArrayList<Integer> fibonacci = getReversedFibonacci(input);
+        ArrayList<Long> fibonacci = getReversedFibonacci(input);
         StringBuilder output = new StringBuilder();
 
-        for (Integer aFibonacci : fibonacci) {
+        for (Long aFibonacci : fibonacci) {
             if (input - aFibonacci == 0 || input - aFibonacci > 0) {
                 output.append(1);
             } else if (input - aFibonacci < 0) {
@@ -33,19 +33,31 @@ public class ZeckendorfNumber {
         System.out.print(output);
     }
 
-    private static ArrayList<Integer> getReversedFibonacci(int input) {
-        ArrayList<Integer> fibonacci = new ArrayList<>();
-        fibonacci.add(1);
-        fibonacci.add(2);
+    private static ArrayList<Long> getReversedFibonacci(int input) {
+        ArrayList<Long> fibonacci = new ArrayList<>();
 
-        int next = 3;
+        // Zeckendorf use Fibonacci numbers not from 0. That the first distinct Fibonacci numbers are: 1, 2, 3, 5.
+        // Start save Fibonacci numbers to array from 3 step. Fibonacci: 0->0, 1->1, 2->1, 3->2, 4->3, 5->5, ...
+        int i = 3;
+        long next = 1;
         while (next <= input) {
             fibonacci.add(next);
-            next = fibonacci.get(fibonacci.size() - 1) + fibonacci.get(fibonacci.size() - 2);
+            next = fibonacci(i++);
         }
 
         Collections.reverse(fibonacci);
 
         return fibonacci;
+    }
+
+    /**
+     * Returns Fibonacci number starts from 0.
+     *
+     * @param n Sequence number of number from Fibonacci numeric series.
+     * @return Fibonacci number.
+     */
+    private static long fibonacci(int n) {
+        if (n <= 1) return n;
+        else return fibonacci(n - 1) + fibonacci(n - 2);
     }
 }
