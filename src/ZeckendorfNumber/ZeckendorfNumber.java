@@ -1,36 +1,60 @@
 package ZeckendorfNumber;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Zeckendorf Number.
  */
 public class ZeckendorfNumber {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    private TreeMap<Integer, ArrayList<Byte>> decimalsWithFibonacciBinariesList = new TreeMap<>();
 
-        convertDecimalToFibonacciBinary(sc.nextInt());
+    public void addDecimal(int decimal) {
+        this.decimalsWithFibonacciBinariesList.put(decimal, convertDecimalToFibonacciBinary(decimal));
     }
 
-    private static void convertDecimalToFibonacciBinary(int input) {
+    public void requestDecimal() {
+        System.out.print("Enter decimal number: ");
+
+        Scanner scanner = new Scanner(System.in);
+        int decimal = scanner.nextInt();
+
+        this.decimalsWithFibonacciBinariesList.put(decimal, convertDecimalToFibonacciBinary(decimal));
+    }
+
+    public void printZackendorfNumbers() {
+        StringBuilder s = new StringBuilder();
+
+        for (Map.Entry<Integer, ArrayList<Byte>> pair : decimalsWithFibonacciBinariesList.entrySet()) {
+            s.append("Zeckendorf number for ").append(pair.getKey()).append(": ").append(arrayListToString(pair.getValue()));
+            s.append("\n");
+        }
+
+        System.out.println(s);
+    }
+
+    private static StringBuilder arrayListToString(ArrayList list) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Object o : list) stringBuilder.append(o);
+
+        return stringBuilder;
+    }
+
+    private static ArrayList<Byte> convertDecimalToFibonacciBinary(int input) {
         ArrayList<Long> fibonacci = getReversedFibonacci(input);
-        StringBuilder output = new StringBuilder();
+        ArrayList<Byte> fibonacciBinary = new ArrayList<>();
 
         for (Long aFibonacci : fibonacci) {
             if (input - aFibonacci == 0 || input - aFibonacci > 0) {
-                output.append(1);
+                fibonacciBinary.add((byte) 1);
             } else if (input - aFibonacci < 0) {
-                output.append(0);
+                fibonacciBinary.add((byte) 0);
                 continue;
-            } else output.append(0);
+            } else fibonacciBinary.add((byte) 0);
 
             input -= aFibonacci;
         }
-        output.append("\n");
 
-        System.out.print(output);
+        return fibonacciBinary;
     }
 
     private static ArrayList<Long> getReversedFibonacci(int input) {
