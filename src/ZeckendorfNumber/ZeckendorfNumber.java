@@ -32,15 +32,16 @@ public class ZeckendorfNumber {
         System.out.println(s);
     }
 
-    private static StringBuilder arrayListToString(ArrayList list) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Object o : list) stringBuilder.append(o);
-
-        return stringBuilder;
-    }
-
     private static ArrayList<Byte> convertDecimalToFibonacciBinary(int input) {
-        ArrayList<Long> fibonacci = getReversedFibonacci(input);
+        ArrayList<Long> fibonacci = Fibonacci.getSeriesLessThenNumber(input);
+        // Zeckendorf use Fibonacci numbers not from 0. That the first distinct Fibonacci numbers are: 1, 2, 3, 5.
+        // Start save Fibonacci numbers to array from 3 step. Fibonacci: 0->0, 1->1, 2->1, 3->2, 4->3, 5->5, ...
+        // Remove 2 first numbers from regular series.
+        fibonacci.remove(0);
+        fibonacci.remove(0);
+        // We need to reverse Fibonacci series.
+        Collections.reverse(fibonacci);
+
         ArrayList<Byte> fibonacciBinary = new ArrayList<>();
 
         for (Long aFibonacci : fibonacci) {
@@ -57,31 +58,10 @@ public class ZeckendorfNumber {
         return fibonacciBinary;
     }
 
-    private static ArrayList<Long> getReversedFibonacci(int input) {
-        ArrayList<Long> fibonacci = new ArrayList<>();
+    private static StringBuilder arrayListToString(ArrayList list) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Object o : list) stringBuilder.append(o);
 
-        // Zeckendorf use Fibonacci numbers not from 0. That the first distinct Fibonacci numbers are: 1, 2, 3, 5.
-        // Start save Fibonacci numbers to array from 3 step. Fibonacci: 0->0, 1->1, 2->1, 3->2, 4->3, 5->5, ...
-        int i = 3;
-        long next = 1;
-        while (next <= input) {
-            fibonacci.add(next);
-            next = fibonacci(i++);
-        }
-
-        Collections.reverse(fibonacci);
-
-        return fibonacci;
-    }
-
-    /**
-     * Returns Fibonacci number starts from 0.
-     *
-     * @param n Sequence number of number from Fibonacci numeric series.
-     * @return Fibonacci number.
-     */
-    private static long fibonacci(int n) {
-        if (n <= 1) return n;
-        else return fibonacci(n - 1) + fibonacci(n - 2);
+        return stringBuilder;
     }
 }

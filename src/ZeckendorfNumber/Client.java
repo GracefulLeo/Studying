@@ -12,9 +12,11 @@ public class Client {
         ZeckendorfNumber zeckendorfNumber = new ZeckendorfNumber();
 //        zeckendorfNumber.addDecimal(scanner.nextInt());
 //        zeckendorfNumber.addDecimal(scanner.nextInt());
-        zeckendorfNumber.requestDecimal();
-        zeckendorfNumber.requestDecimal();
-        zeckendorfNumber.requestDecimal();
+//        zeckendorfNumber.requestDecimal();
+//        zeckendorfNumber.requestDecimal();
+//        zeckendorfNumber.requestDecimal();
+        zeckendorfNumber.addDecimal(11);
+        zeckendorfNumber.addDecimal(117);
         zeckendorfNumber.printZackendorfNumbers();
     }
 }
