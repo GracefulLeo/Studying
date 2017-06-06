@@ -2,10 +2,10 @@ package samples.encryption;
 
 public class EncryptRunner {
     public static void main(String[] args) {
-        Encryptable decoded = new Decoder("Hello world!");
-        Encryptable encoded = new Encoder(decoded.encrypt());
+        Encryptable encoded = new Encoder("Hello world! My name is Dima.");
+        Encryptable decoded = new Decoder(encoded.encrypt());
 
-        System.out.println(decoded.encrypt());
         System.out.println(encoded.encrypt());
+        System.out.println(decoded.encrypt());
     }
 }

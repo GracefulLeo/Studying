@@ -13,7 +13,7 @@ public class Encoder implements Encryptable {
         StringBuilder builder = new StringBuilder();
 
         for (char c : chars) {
-            builder.append(c += 100);
+            builder.append(c -= 100);
         }
 
         return builder.toString();
