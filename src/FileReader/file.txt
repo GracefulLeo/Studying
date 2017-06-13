@@ -1,0 +1,6 @@
+- Hello, Java!
+- Hello-hello!
+1
+1.5
+c
+true
