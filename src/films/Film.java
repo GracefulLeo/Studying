@@ -56,6 +56,6 @@ public class Film {
 
     @Override
     public String toString() {
-        return title + ": \t" + year + "\n";
+        return title + ": \t" + year + "\t" + genres.toString() + "\n";
     }
 }

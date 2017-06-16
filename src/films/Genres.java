@@ -13,6 +13,12 @@ public enum Genres {
             return "Adventure";
         }
     },
+    CRIME {
+        @Override
+        public String toString() {
+            return "Crime";
+        }
+    },
     DRAMA {
         @Override
         public String toString() {
@@ -23,6 +29,12 @@ public enum Genres {
         @Override
         public String toString() {
             return "Fantasy";
+        }
+    },
+    MYSTERY {
+        @Override
+        public String toString() {
+            return "Mystery";
         }
     },
     ROMANCE {
