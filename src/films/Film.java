@@ -1,9 +1,11 @@
 package films;
 
-
+import java.io.Serializable;
 import java.util.Set;
 
-public class Film {
+public class Film implements Serializable {
+    private static long serialVersionUID = 1L;
+
     private final int id;
     private final String title;
     private final int year;

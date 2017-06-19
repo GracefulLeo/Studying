@@ -1,9 +1,10 @@
 package films;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.function.Predicate;
 
-public class Films implements Iterable<Film> {
+public class Films implements Iterable<Film>, Serializable {
     private final List<Film> films = new ArrayList<>();
 
     public Films add(Film film) {
