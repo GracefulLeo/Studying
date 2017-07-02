@@ -22,9 +22,6 @@ class MyFileReader {
         } catch (IOException e) {
             System.out.println("File not found: " + e.getMessage());
         }
-        finally {
-            // @todo Close files.
-        }
 
         return list.toArray(new String[]{});
     }
