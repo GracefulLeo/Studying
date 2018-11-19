@@ -18,7 +18,7 @@ public class ViewApp {
         if (true /* == "yes"*/){
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM appartments");
             try {
-                ResultSet rs = ps.2executeQuery();
+                ResultSet rs = ps.executeQuery();
                 try{
                     ResultSetMetaData md = rs.getMetaData();
 

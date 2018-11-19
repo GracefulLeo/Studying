@@ -10,7 +10,7 @@ import static AppartmentsCount.addApp.addAppartments;
 public class Main {
     static final String DB_CONNECTION = "jdbc:mysql://localhost:3306/appartments";
     static final String DB_USER = "root";
-    static final String DB_PASSWORD = "1111";
+    static final String DB_PASSWORD = "29eb1f1ca";
 
     static Connection conn;
 
